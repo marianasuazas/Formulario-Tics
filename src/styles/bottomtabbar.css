@@ -1,0 +1,48 @@
+.bottom-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 80px;
+  padding: 0 16px;
+  background: #f7f9fb;
+  border-top: 1px solid #c6c6d0;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #45464f;
+  border-radius: 0.75rem;
+  transition: color 0.15s;
+  font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+}
+
+.tab-item:hover {
+  color: #000827;
+}
+
+.tab-item--active {
+  background: #0d1e4c;
+  color: #7887bb;
+}
+
+.tab-item--active:hover {
+  color: #7887bb;
+}
+
+.tab-label {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}

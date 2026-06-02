@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import SignatureField from './SignatureField'
+import SignatureCanvas from '../molecules/SignatureCanvas'
 
 export default function SignatureModal({ label, onConfirm, onClose }) {
   const [sigData, setSigData] = useState('')
@@ -10,11 +10,6 @@ export default function SignatureModal({ label, onConfirm, onClose }) {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = prev }
   }, [])
-
-  const handleConfirm = () => {
-    if (!sigData) return
-    onConfirm(sigData)
-  }
 
   return createPortal(
     <div className="sig-overlay" onClick={onClose}>
@@ -31,7 +26,7 @@ export default function SignatureModal({ label, onConfirm, onClose }) {
 
         <p className="sig-modal-label">{label}</p>
 
-        <SignatureField onChange={setSigData} height={200} />
+        <SignatureCanvas onChange={setSigData} height={200} />
 
         <div className={`sig-status ${sigData ? 'sig-status--ready' : 'sig-status--waiting'}`}>
           {sigData ? (
@@ -48,7 +43,7 @@ export default function SignatureModal({ label, onConfirm, onClose }) {
                 <line x1="12" y1="8" x2="12" y2="12" />
                 <line x1="12" y1="16" x2="12.01" y2="16" />
               </svg>
-              Dibuja la firma y presiona "Guardar"
+              Dibuja la firma y presiona &quot;Guardar&quot;
             </>
           )}
         </div>
@@ -60,7 +55,7 @@ export default function SignatureModal({ label, onConfirm, onClose }) {
           <button
             type="button"
             className="sig-btn sig-btn--confirm"
-            onClick={handleConfirm}
+            onClick={() => sigData && onConfirm(sigData)}
             disabled={!sigData}
           >
             Guardar firma

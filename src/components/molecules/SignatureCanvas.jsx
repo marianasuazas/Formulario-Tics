@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function SignatureField({ value, onChange, height = 180, lineWidth = 2 }) {
+export default function SignatureCanvas({ value, onChange, height = 180, lineWidth = 2 }) {
   const wrapRef = useRef(null)
   const canvasRef = useRef(null)
   const ctxRef = useRef(null)
@@ -233,7 +233,6 @@ export default function SignatureField({ value, onChange, height = 180, lineWidt
           </div>
         )}
       </div>
-
       <button
         type="button"
         onClick={clear}
